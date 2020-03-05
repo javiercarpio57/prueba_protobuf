@@ -1,0 +1,16 @@
+syntax = "proto2";
+  
+package chat;
+
+message MiInfoRequest 
+{
+  required string username = 1;
+  required string ip = 2;
+}
+
+message Mensaje
+{
+  required string option = 1;
+
+  optional MiInfoRequest miInfoReq = 2;
+}
