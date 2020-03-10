@@ -9,10 +9,10 @@ int main()
 {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-    // Se crea instacia tipo MiInfoRequest y se setean los valores deseables
-    MiInfoRequest* miInfo(new MiInfoRequest);
+    // Se crea instacia tipo MyInfoSynchronize y se setean los valores deseables
+    MyInfoSynchronize * miInfo(new MyInfoSynchronize);
     miInfo->set_username("username123");
-    miInfo->set_ip("12356789");
+    miInfo->set_ip("127.0.0.1");
 
     // Se crea instancia de Mensaje, se setea los valores deseados
     Mensaje m;
@@ -51,8 +51,8 @@ int main()
 
     // Se puede accesar a los valores de la siguiente manera:
     cout << "Option: " << m2.option() << endl;
-    cout << "Username: " << m2.miinforeq().username() << endl;
-    cout << "ip: " << m2.miinforeq().ip() << endl;
+    cout << "Username: " << m2.synchronize().username() << endl;
+    cout << "ip: " << m2.synchronize().ip() << endl;
 
     google::protobuf::ShutdownProtobufLibrary();
     return 1;
