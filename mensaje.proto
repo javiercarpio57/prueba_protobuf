@@ -99,6 +99,7 @@ message DirectMessageResponse {
   required string messageStatus = 1;
 }
 
+// Received from SERVER (Only recipient)
 message DirectMessage {
   required string message = 1;
   required string userId = 2;
@@ -113,6 +114,12 @@ message ErrorResponse {
 
 
 // CLIENT MESSAGE OPTIONS
+// "option" helps the Server identify the type of message it is receiving and what to use to parse it
+// option 1: synchronize
+// option 2: connectedUsers
+// option 3: changeStatus
+// option 4: broadcast
+// option 5: directMessage
 message ClientMessage {
   required int32 option = 1;
 
@@ -127,4 +134,19 @@ message ClientMessage {
   optional BroadcastRequest broadcast = 6;
 
   optional DirectMessageRequest directMessage = 7;
+}
+
+// SERVER MESSAGE OPTIONS
+// "option" helps the Client identify the type of message it is receiving and what to use to parse it
+// option 1: broadcast
+// option 2: message
+// option 3: error
+message ServerMessage {
+  required int32 option = 1;
+
+  optional BroadcastMessage broadcast = 2;
+
+  optional DirectMessage message = 3;
+
+  optional ErrorResponse error = 4;
 }
