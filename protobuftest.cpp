@@ -15,9 +15,9 @@ int main()
     miInfo->set_ip("127.0.0.1");
 
     // Se crea instancia de Mensaje, se setea los valores deseados
-    Mensaje m;
-    m.set_option("0");
-    m.set_allocated_miinforeq(miInfo);
+    ClientMessage m;
+    m.set_option(0);
+    m.set_allocated_synchronize(miInfo);
 
     // Se serializa el message a string
     string binary;
@@ -46,7 +46,7 @@ int main()
     */
 
     // Se deserealiza el string a un objeto Mensaje
-    Mensaje m2;
+    ClientMessage m2;
     m2.ParseFromString(binary);
 
     // Se puede accesar a los valores de la siguiente manera:
